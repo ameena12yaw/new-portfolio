@@ -13,41 +13,43 @@ import {
 } from 'react-icons/fa'
 
 import { SiTailwindcss, SiNextdotjs } from 'react-icons/si'
+import { BiLogoPostgresql } from "react-icons/bi";
+import { SiPython } from "react-icons/si";
 
 const about = {
   title: 'About me',
-  description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda, minima!',
+  description: 'I am an efficient self-starter eager to apply my experience where I can grow under the direction of a seasoned Web Developer. I am also a detail-oriented team player with strong organizational skills.',
   info: [
     {
-      fieldName: "Name",
+      fieldName: "Name:",
       fieldValue: "Ameena Nelson",
     },
     {
-      fieldName: "Phone",
+      fieldName: "Phone:",
       fieldValue: "+233 20 640 2152",
     },
     {
-      fieldName: "Experience",
+      fieldName: "Experience:",
       fieldValue: "2+ Years",
     },
     {
-      fieldName: "Skype",
+      fieldName: "Skype:",
       fieldValue: ".cid.6eb0d8b299a32efa",
     },
     {
-      fieldName: "Nationality",
+      fieldName: "Nationality:",
       fieldValue: "Ghanaian",
     },
     {
-      fieldName: "Email",
+      fieldName: "Email:",
       fieldValue: "ameena12nelson@gmail.com",
     },
     {
-      fieldName: "Freelance",
+      fieldName: "Freelance:",
       fieldValue: "Available",
     },
     {
-      fieldName: "Language",
+      fieldName: "Language:",
       fieldValue: "English",
     },
   ]
@@ -56,7 +58,7 @@ const about = {
 const experience = {
   icon: '/public/assets/resume/badge.svg',
   title: 'My experience',
-  description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda, minima!',
+  description: 'List of my most prominent work experience as far as software development is concerned.',
   items: [
     {
       company: "Commodity Monitor.",
@@ -79,7 +81,7 @@ const experience = {
 const education = {
   icon: '/public/assets/resume/cap.svg',
   title: 'My education',
-  description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda, minima!',
+  description: 'listed below is the software development training I have had.',
   items: [
     {
       Institution: "ALX",
@@ -117,7 +119,7 @@ const education = {
 
 const skills = {
   title: 'My skills',
-  description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda, minima!',
+  description: "I'm proficient in the list of programming languages and frameworks below.",
   skillList: [
     {
       icon: <FaHtml5 />,
@@ -136,28 +138,28 @@ const skills = {
       name: "React Js",
     },
     {
+      icon: <SiPython />,
+      name: "Python",
+    },
+    {
       icon: <SiTailwindcss />,
       name: "Tailwind Css"
     },
     {
       icon: <SiNextdotjs />,
-      name: "Next "
+      name: "Next Js"
     },
     {
       icon: <FaNodeJs />,
       name: "Node Js",
     },
     {
+      icon: <BiLogoPostgresql />,
+      name: "Postgres SQL",
+    },
+    {
       icon: <FaFigma />,
       name: "Figma",
-    },
-    {
-      icon: <FaSql />,
-      name: "SQL",
-    },
-    {
-      icon: <FaPostgres />,
-      name: "Postgres",
     },
   ]
 }
@@ -198,10 +200,10 @@ const Resume = () => {
           <div className='min-h-[70vh] w-full'>
               <TabsContent value='experience' className='w-full'>
                 <div className='flex-col gap-[30px] text-center xl:text-left'> 
-                  <h3 className='text-3xl font-bold'>
+                  <h3 className='mb-10 text-3xl font-bold'>
                     {experience.title}
                   </h3>
-                  <p className='max-w-[600px] text-white/60 mx-auto xl:mx-0'>
+                  <p className='max-w-[600px] text-white/60 mx-auto xl:mx-0 mb-10'>
                     {experience.description}
                   </p>
                   <ScrollArea className='h-[400px]'>
@@ -226,15 +228,13 @@ const Resume = () => {
                   </ScrollArea>
                 </div>
               </TabsContent>
-
-
-              
+          
               <TabsContent value='education' className='w-full'>
                   <div className='flex-col gap-[30px] text-center xl:text-left'> 
-                      <h3 className='text-3xl font-bold'>
+                      <h3 className='mb-10 text-3xl font-bold'>
                         {education.title}
                       </h3>
-                      <p className='max-w-[600px] text-white/60 mx-auto xl:mx-0'>
+                      <p className='max-w-[600px] text-white/60 mx-auto xl:mx-0 mb-10'>
                         {education.description}
                       </p>
                       <ScrollArea className='h-[400px]'>
@@ -259,11 +259,61 @@ const Resume = () => {
                       </ScrollArea>
                     </div>
               </TabsContent>
-              <TabsContent value='skills' className='w-full'>
-                skills
+              
+              <TabsContent value='skills' className='w-full h-full'>
+                <div className='flex flex-col gap-[30px]'>
+                  <div className='flex flex-col gap-[30px] text-center xl:text-left'>
+                    <h3 className='text-3xl font-bold'>
+                      {skills.title}
+                    </h3>
+                    <p className='max-w-[600px] text-white/60 mx-auto xl:mx-0'>
+                      {skills.description}
+                    </p>
+                  </div>
+                  <ul className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 xl:gap-[30px]'>
+                    {skills.skillList.map((skill, index)=> {
+                      return (
+                        <li key={index}>
+                          <TooltipProvider delayDuration={100}>
+                            <Tooltip>
+                              <TooltipTrigger className='w-full h-[100px] bg-[#232329] rounded-xl flex justify-center items-center group'>
+                                <div className='text-4xl transition-all duration-300 group-hover:text-accent'>
+                                  {skill.icon}
+                                </div>
+                              </TooltipTrigger>
+                              <TooltipContent>
+                                <p className='capitalize'>
+                                  {skill.name}
+                                </p>
+                              </TooltipContent>
+                            </Tooltip>
+                          </TooltipProvider>
+                        </li>
+                      )
+                    })}
+                  </ul>
+                </div>
               </TabsContent>
-              <TabsContent value='about' className='w-full'>
-                about me
+              
+              <TabsContent value='about' className='w-full text-center xl:text-left'>
+                <div className='flex-col gap-[30px]'>
+                  <h3 className='mb-10 text-3xl font-bold'>
+                    {about.title}
+                  </h3>
+                  <p className='max-w-[600px] text-white/60 mx-auto xl:mx-0 mb-10'>
+                    {about.description}
+                  </p>
+                  <ul className='grid grid-cols-1 xl:grid-cols-2 gap-y-6 max-w-[620px] mx-auto xl:mx-0'>
+                    {about.info.map((item, index)=> {
+                      return (
+                        <li key={index} className='flex items-center justify-center gap-4 xl:justify-start'>
+                          <span className='text-white/60'>{item.fieldName}</span>
+                          <span className='text-xl'>{item.fieldValue}</span>
+                        </li>
+                      )
+                    })}
+                  </ul>
+                </div>
               </TabsContent>
           </div>
         </Tabs>
